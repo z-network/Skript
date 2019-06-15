@@ -1,1 +1,273 @@
 
+
+#! Network Ranks  
+
+#! NETWORK OWNER 
+#! NETWORK LEADER
+#! NETWORK COMMANDER
+#! NETWORK DEVELOPER
+#! NETWORK ADMINISTATOR
+#! NETWORK SENIOR 
+#! NETWORK MODERATOR 
+#! NETWORK JUNIOR
+#! NETWORK BUILDER
+#! NETWORK HELPER
+
+
+variables:
+	{muted.%player%} = "false"
+	{network.gmuted} = "false"
+	{gchat.%player%} = "DEFAULT"
+	{player.suffix.%player%} = "&r"
+
+on chat:
+	if {network.gmuted} is "true":
+		cancel event 
+		send "&f&lVape &8» &7Global chat is curently disable !" to player 
+
+command /gchat [<text>]:
+	permission: vapemc.global.chat
+	permission message: &f&lVape &8» &cMissing permission !
+	trigger:
+
+		if arg 1 is not set:
+			send "&f&lVape &8» &fInvalid boolean &8(&a&ltrue&8/&c&lfalse&8)"
+			stop
+
+		if arg 1 is set:
+			if arg 1 is not "true" or "false":
+				send "&f&lVape &8» &fInvalid boolean &8(&a&ltrue&8/&c&lfalse&8)"
+				stop
+
+		if arg 1 is set:
+			if arg 1 is "true":
+				if {network.gmuted} is "false":
+					set {network.gmuted} to "true"
+					broadcast "&f&lVape &8» &7Chat has been &c&l&ndisable&7 by &e%sender%"
+					stop
+
+		if arg 1 is set:
+			if arg 1 is "true":
+				if {network.gmuted} is "true":
+					send "&f&lVape &8» &7Chat is already disabled !" to sender
+					stop
+
+		if arg 1 is set:
+			if arg 1 is "false":
+				if {network.gmuted} is "true":
+					set {network.gmuted} to "false"
+					broadcast "&f&lVape &8» &7Chat has been &a&l&nenabled&7 by &e%sender%"
+					stop
+					
+		if arg 1 is set:
+			if arg 1 is "false":
+				if {network.gmuted} is "false":
+					send "&f&lVape &8» &7Chat is already enabled !" to sender
+					stop
+
+#
+#! Chat events
+#
+
+
+#
+#! SetGroups | UnsetGroups | RemovePlayerFromGroup | AddPlayerToGroup
+#
+
+
+command /setgroup [<offline player>] [<text>]:
+	permission: vapemc.setgroup
+	permission message: &f&lVape &8» &cMissing permission !
+	trigger:
+
+#! Main tasks 
+
+		if arg 1 is not set:
+			send "&f&lVape &8» &7/setgroup <player> <group>"
+
+		if arg 1 is set:
+			if arg 2 is not set:
+				send "&f&lVape &8» &cMissing argument ! &8(&7/setgroup <player> <rank>&8)"
+
+#                            # NETWORK OWNER             # NETWORK LEADER                              # NETWORK COMMANDER                # NETWORK DEV            # NETWORK ADMIN                       # NETWORK SENIOR             # Network Moderator              # Network Junior              # Network Builder                 # Network Helper    # Player Ranks | Null 
+		if arg 1 is set:
+			if arg 2 is not "networkowner" or "nowner" or "networkleader" or "nleader" or "cowner" or "networkcommander" or "nmanager" or "ndev" or "ndeveloper" or "networkadministator" or "nadmin" or "networksenior" or "nsenior" or "networkmoderator" or "nmod" or "networkjunior" or "njunior" or "networkbuilder" or "nbuilder" or "networkhelper" or "nhelper" or "none":
+				send "&f&lVape &8» &7Invalid Rank !"
+
+		if arg 1 is set:
+			if arg 2 is "none":
+				send "&f&lVape &8» &7You can you talk in the normal chat"
+				set {gchat.%player%} to "null"
+				set {player.suffix.%player%} to "&r"
+				set player tab name to "&8○ &f%sender%"
+
+#! Groups 
+
+		if arg 1 is set:
+			if arg 2 is set:
+				if arg 2 is "default" or "bot":
+					set {gchat.%arg 1%} to "DEFAULT"
+					send "&f&lVape &8» &c%arg 1%&7's rank has been updated to &7&lMEMBER"
+
+		if arg 1 is set:
+			if arg 2 is set:
+				if arg 2 is "networkowner" or "nowner":
+					set {gchat.%arg 1%} to "NETWORK-OWNER"
+					send "&f&lVape &8» &c%arg 1%&7's rank has been updated to &4&lNETWORK OWNER"
+
+		if arg 1 is set:
+			if arg 2 is set:
+				if arg 2 is "networkleader" or "cowner" or "nleader":
+					set {gchat.%arg 1%} to "NETWORK-LEADER"
+					send "&f&lVape &8» &c%arg 1%&7's rank has been updated to &4&lNETWORK LEADER"
+
+		if arg 1 is set:
+			if arg 2 is set:
+				if arg 2 is "networkcommander" or "nmanager":
+					set {gchat.%arg 1%} to "NETWORK-COMMANDER"
+					send "&f&lVape &8» &c%arg 1%&7's rank has been updated to &5&lNETWORK COMMANDER"
+
+		if arg 1 is set:
+			if arg 2 is set:
+				if arg 2 is "ndev" or "networkdeveloper":
+					set {gchat.%arg 1%} to "NETWORK-DEVELOPER"
+					send "&f&lVape &8» &c%arg 1%&7's rank has been updated to &d&lNETWORK DEVELOPER"
+
+		if arg 1 is set:
+			if arg 2 is set:
+				if arg 2 is "networkadministator" or "nadmin":
+					set {gchat.%arg 1%} to "NETWORK-ADMINISTATOR"
+					send "&f&lVape &8» &c%arg 1%&7's rank has been updated to &c&lNETWORK ADMINISTATOR"
+
+		if arg 1 is set:
+			if arg 2 is set:
+				if arg 2 is "networksenior" or "nsenior":
+					set {gchat.%arg 1%} to "NETWORK-SENIOR"
+					send "&f&lVape &8» &c%arg 1%&7's rank has been updated to &b&lNETWORK SENIOR"
+
+		if arg 1 is set:
+			if arg 2 is set:
+				if arg 2 is "networkmoderator" or "nmod":
+					set {gchat.%arg 1%} to "NETWORK-MODERATOR"
+					send "&f&lVape &8» &c%arg 1%&7's rank has been updated to &e&lNETWORK MODERATOR"
+
+		if arg 1 is set:
+			if arg 2 is set:
+				if arg 2 is "networkjunior" or "njunior":
+					set {gchat.%arg 1%} to "NETWORK-JUNIOR"
+					send "&f&lVape &8» &c%arg 1%&7's rank has been updated to &a&lNETWORK JUNIOR"
+
+		if arg 1 is set:
+			if arg 2 is set:
+				if arg 2 is "networkbuilder" or "nbuilder":
+					set {gchat.%arg 1%} to "NETWORK-BUILDER"
+					send "&f&lVape &8» &c%arg 1%&7's rank has been updated to &6&lNETWORK BUILDER"
+
+		if arg 1 is set: 
+			if arg 2 is set:
+				if arg 2 is "networkhelper" or "nhelper":
+					set {gchat.%arg 1%} to "NETWORK-HELPER"
+					send "&f&lVape &8» &c%arg 1%&7's rank has been updated to &9&lNETWORK HELPER"
+
+
+on chat:
+	if {gchat.%player%} is "DEFAULT":
+		cancel event 
+		broadcast "&7&lMEMBER &7%player% %{player.suffix.%player%}% &8» &f%message%"
+
+	if {gchat.%player%} is "NETWORK-OWNER":
+		cancel event 
+		broadcast "&4&lNETWORK OWNER &7%player% %{player.suffix.%player%}% &8» &f%message%"
+
+	if {gchat.%player%} is "NETWORK-LEADER":
+		cancel event 
+		broadcast "&4&lNETWORK LEADER &7%player% %{player.suffix.%player%}% &8» &f%message%"
+
+	if {gchat.%player%} is "NETWORK-COMMANDER":
+		cancel event 
+		broadcast "&5&lNETWORK COMMANDER &7%player% %{player.suffix.%player%}% &8» &f%message%"
+
+	if {gchat.%player%} is "NETWORK-DEVELOPER":
+		cancel event 
+		broadcast "&d&lNETWORK DEVELOPER &7%player% %{player.suffix.%player%}% &8» &f%message%"
+
+	if {gchat.%player%} is "NETWORK-ADMINISTATOR":
+		cancel event 
+		broadcast "&c&lNETWORK ADMINISTATOR &7%player% %{player.suffix.%player%}% &8» &f%message%"
+
+	if {gchat.%player%} is "NETWORK-SENIOR":
+		cancel event 
+		broadcast "&b&lNETWORK SENIOR &7%player% %{player.suffix.%player%}% &8» &f%message%"
+
+	if {gchat.%player%} is "NETWORK-MODERATOR":
+		cancel event 
+		broadcast "&e&lNETWORK MODERATOR &7%player% %{player.suffix.%player%}% &8» &f%message%"
+
+	if {gchat.%player%} is "NETWORK-JUNIOR":
+		cancel event 
+		broadcast "&a&lNETWORK JUNIOR &7%player% %{player.suffix.%player%}% &8» &f%message%"
+
+	if {gchat.%player%} is "NETWORK-BUILDER":
+		cancel event 
+		broadcast "&6&lNETWORK BUILDER &7%player% %{player.suffix.%player%}% &8» &f%message%"
+	if {gchat.%player%} is "NETWORK-HELPER":
+		cancel event
+		broadcast "&9&lNETWORK HELPER &7%player% %{player.suffix.%player%}% &8» &f%message%"
+
+
+
+#
+#! Tablist Prefixs 
+#
+
+every second:
+	loop all players:
+		if {gchat.%loop-player%} is "DEFAULT":
+			set loop-player tab name to "&7&lMEMBER &7%loop-player% %{player.suffix.%loop-player%}%"
+
+		if {gchat.%loop-player%} is "NETWORK-OWNER":
+			set loop-player tab name to "&4&lNETWORK OWNER &7%loop-player% %{player.suffix.%loop-player%}%"
+
+		if {gchat.%loop-player%} is "NETWORK-LEADER":
+			set loop-player tab name to "&4&lNETWORK LEADER &7%loop-player% %{player.suffix.%loop-player%}%"
+
+		if {gchat.%loop-player%} is "NETWORK-COMMANDER":
+			set loop-player tab name to "&5&lNETWORK COMMANDER &7%loop-player% %{player.suffix.%loop-player%}%"
+
+		if {gchat.%loop-player%} is "NETWORK-DEVELOPER":
+			set loop-player tab name to "&d&lNETWORK DEVELOPER &7%loop-player% %{player.suffix.%loop-player%}%"
+
+		if {gchat.%loop-player%} is "NETWORK-ADMINISTATOR":
+			set loop-player tab name to "&c&lNETWORK ADMINISTATOR &7%loop-player% %{player.suffix.%loop-player%}%"
+
+		if {gchat.%loop-player%} is "NETWORK-SENIOR":
+			set loop-player tab name to "&b&lNETWORK SENIOR &7%loop-player% %{player.suffix.%loop-player%}%"
+
+		if {gchat.%loop-player%} is "NETWORK-MODERATOR":
+			set loop-player tab name to "&e&lNETWORK MODERATOR &7%loop-player% %{player.suffix.%loop-player%}%"
+
+		if {gchat.%loop-player%} is "NETWORK-JUNIOR":
+			set loop-player tab name to "&a&lNETWORK JUNIOR &7%loop-player% %{player.suffix.%loop-player%}%"
+
+		if {gchat.%loop-player%} is "NETWORK-BUILDER":
+			set loop-player tab name to "&6&lNETWORK BUILDER &7%loop-player% %{player.suffix.%loop-player%}%"
+
+		if {gchat.%loop-player%} is "NETWORK-HELPER":
+			set loop-player tab name to "&9&lNETWORK HELPER &7%loop-player% %{player.suffix.%loop-player%}%"
+
+options:
+	prefix: &8»
+
+command /suffix [<text>]:
+	permission: "vapemc.chat.suffix" or "*"
+	permission message: {@prefix} &7You are not allowed to use this !
+	trigger:
+
+		if arg 1 is not set:
+			send "{@prefix} &7Missing argument"
+
+		if arg 1 is set:
+			send "{@prefix} &7Suffix updated &8(&7%arg 1%&8)"
+			set {suffix.%player%} to arg 1
+			replace all "&" with "§" in {suffix.%player%}
+			set {player.suffix.%player%} to "%{suffix.%player%}%"
