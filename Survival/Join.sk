@@ -1,0 +1,33 @@
+on join:
+	if {gchat.%player%} is "DEFAULT":
+		set join message to "&8➟ &7&lMEMBER &7%player% &ajoined the game"
+
+	if {gchat.%player%} is "NETWORK-OWNER":
+		set join message to "&9&lSTAFF &8➟ &4&lNETWORK OWNER &7%player% &ajoined the game"
+
+	if {gchat.%player%} is "NETWORK-LEADER":
+		set join message to "&9&lSTAFF &8➟ &4&lNETWORK LEADER &7%player% &ajoined the game"
+
+	if {gchat.%player%} is "NETWORK-COMMANDER":
+		set join message to "&9&lSTAFF &8➟ &5&lNETWORK COMMANDER &7%player% &ajoined the game"
+
+	if {gchat.%player%} is "NETWORK-DEVELOPER":
+		set join message to "&9&lSTAFF &8➟ &d&lNETWORK DEVELOPER &7%player% &ajoined the game"
+
+	if {gchat.%player%} is "NETWORK-ADMINISTATOR":
+		set join message to "&9&lSTAFF &8➟ &c&lNETWORK ADMINISTATOR &7%player% &ajoined the game"
+
+	if {gchat.%player%} is "NETWORK-SENIOR":
+		set join message to "&9&lSTAFF &8➟ &b&lNETWORK SENIOR &7%player% &ajoined the game"
+
+	if {gchat.%player%} is "NETWORK-MODERATOR":
+		set join message to "&9&lSTAFF &8➟ &e&lNETOWRK MODERATOR &7%player% &ajoined the game"
+
+	if {gchat.%player%} is "NETOWRK-JUNIOR":
+		set join message to "&9&lSTAFF &8➟ &a&lNETWORK JUNIOR &7%player% &ajoined the game"
+
+	if {gchat.%player%} is "NETWORK-BUILDER":
+		set join message to "&9&lSTAFF &8➟ &6&lNETOWRK BUILDER &7%player% &ajoined the game"
+
+	if {gchat.%player%} is "NETWORK-HELPER":
+		set join message to "&9&lSTAFF &8➟ &9&lNETWORK HELPER &7%player% &ajoined the game"

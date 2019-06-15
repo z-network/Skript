@@ -1,0 +1,33 @@
+on quit:
+	if {gchat.%player%} is "DEFAULT":
+		set quit message to "&8➟ &7&lMEMBER &7%player% &cleft the game"
+
+	if {gchat.%player%} is "NETWORK-OWNER":
+		set quit message to "&9&lSTAFF &8➟ &4&lNETWORK OWNER &7%player% &cleft the game"
+
+	if {gchat.%player%} is "NETWORK-LEADER":
+		set quit message to "&9&lSTAFF &8➟ &4&lNETWORK LEADER &7%player% &cleft the game"
+
+	if {gchat.%player%} is "NETWORK-COMMANDER":
+		set quit message to "&9&lSTAFF &8➟ &5&lNETWORK COMMANDER &7%player% &cleft the game"
+
+	if {gchat.%player%} is "NETWORK-DEVELOPER":
+		set quit message to "&9&lSTAFF &8➟ &d&lNETWORK DEVELOPER &7%player% &cleft the game"
+
+	if {gchat.%player%} is "NETWORK-ADMINISTATOR":
+		set quit message to "&9&lSTAFF &8➟ &c&lNETWORK ADMINISTATOR &7%player% &cleft the game"
+
+	if {gchat.%player%} is "NETWORK-SENIOR":
+		set quit message to "&9&lSTAFF &8➟ &b&lNETWORK SENIOR &7%player% &cleft the game"
+
+	if {gchat.%player%} is "NETWORK-MODERATOR":
+		set quit message to "&9&lSTAFF &8➟ &e&lNETOWRK MODERATOR &7%player% &cleft the game"
+
+	if {gchat.%player%} is "NETOWRK-JUNIOR":
+		set quit message to "&9&lSTAFF &8➟ &a&lNETWORK JUNIOR &7%player% &cleft the game"
+
+	if {gchat.%player%} is "NETWORK-BUILDER":
+		set quit message to "&9&lSTAFF &8➟ &6&lNETOWRK BUILDER &7%player% &cleft the game"
+
+	if {gchat.%player%} is "NETWORK-HELPER":
+		set quit message to "&9&lSTAFF &8➟ &9&lNETWORK HELPER &7%player% &cleft the game"
