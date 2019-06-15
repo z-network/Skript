@@ -2,6 +2,8 @@ on join:
 	if {gchat.%player%} is "DEFAULT":
 		set join message to "&8➟ &7&lMEMBER &7%player% &ajoined the game"
 
+#! Ranks
+
 	if {gchat.%player%} is "NETWORK-OWNER":
 		set join message to "&9&lSTAFF &8➟ &4&lNETWORK OWNER &7%player% &ajoined the game"
 
