@@ -1,3 +1,5 @@
+#! More ranks soon !
+
 on quit:
 	if {gchat.%player%} is "DEFAULT":
 		set quit message to "&8➟ &7&lMEMBER &7%player% &cleft the game"
